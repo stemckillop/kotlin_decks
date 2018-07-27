@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Decks</string>
+
+    <string-array name="formats">
+        <item>Commander</item>
+        <item>Legacy</item>
+        <item>Modern</item>
+        <item>Standard</item>
+        <item>Vintage</item>
+    </string-array>
+</resources>

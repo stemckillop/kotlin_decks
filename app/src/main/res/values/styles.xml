@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CommanderTag" parent="@android:style/Widget.TextView">
+        <item name="android:background">@drawable/commander_tag</item>
+        <item name="android:backgroundTint">@android:color/holo_red_dark</item>
+        <item name="android:text">Commander</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="StandardTag" parent="CommanderTag">
+        <item name="android:backgroundTint">@android:color/holo_blue_bright</item>
+        <item name="android:text">Standard</item>
+    </style>
+
+    <style name="ModernTag" parent="CommanderTag">
+        <item name="android:backgroundTint">@android:color/holo_green_light</item>
+        <item name="android:text">Modern</item>
+    </style>
+
+    <style name="LegacyTag" parent="CommanderTag">
+        <item name="android:backgroundTint">@android:color/holo_orange_light</item>
+        <item name="android:text">Legacy</item>
+    </style>
+
+    <style name="Vintage" parent="CommanderTag">
+        <item name="android:backgroundTint">#ff0</item>
+        <item name="android:text">Vintage</item>
+    </style>
+
+    <style name="CardManageDeck" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/card_buttons</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:drawableLeft">@drawable/menu</item>
+        <item name="android:drawableTint">@color/colorAccent</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:text">Manage Deck</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+    <style name="CardRecordGame" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/card_buttons_dark</item>
+        <item name="android:backgroundTint"></item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:drawableLeft">@drawable/record</item>
+        <item name="android:drawableTint">@color/colorPrimaryDark</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:text">Record Game</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>
