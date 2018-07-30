@@ -6,33 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/main_deck_list"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1">
 
-        android:layout_weight="1"
-        android:divider="@null"
-        tools:listitem="@layout/list_deck_card">
+        <TextView
+            android:id="@+id/main_deck_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="You have no decks, click + to add a new deck" />
 
-    </ListView>
-
-    <LinearLayout
-        android:id="@+id/main_button_parents"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal">
-
-        <Button
+        <ListView
+            android:id="@+id/main_deck_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:divider="@null"
+            tools:listitem="@layout/list_deck_card">
 
-    </LinearLayout>
+        </ListView>
+    </RelativeLayout>
 
 </LinearLayout>

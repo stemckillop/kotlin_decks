@@ -13,59 +13,65 @@
 
         <LinearLayout
             android:id="@+id/card_color_tower"
-            android:layout_width="wrap_content"
+            android:layout_width="32dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="4dp"
             android:layout_marginTop="4dp"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/tW"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_white" />
+                android:src="@drawable/color_ident_white"
+                android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/tU"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_blue" />
+                android:src="@drawable/color_ident_blue"
+                android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/tB"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_black" />
+                android:src="@drawable/color_ident_black"
+                android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/tR"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_red" />
+                android:src="@drawable/color_ident_red"
+                android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/tG"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_green" />
+                android:src="@drawable/color_ident_green"
+                android:visibility="gone" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/tA"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:src="@drawable/color_ident_colorless" />
+                android:src="@drawable/color_ident_colorless"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -91,7 +97,7 @@
             android:padding="4dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/card_deck_info"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_below="@+id/card_deck_title"
@@ -169,8 +175,7 @@
                 android:id="@+id/button5"
                 style="@style/CardManageDeck"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manage Deck" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </RelativeLayout>

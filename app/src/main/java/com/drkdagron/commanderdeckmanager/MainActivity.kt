@@ -12,6 +12,7 @@ import com.drkdagron.commanderdeckmanager.db.DB
 class MainActivity : AppCompatActivity() {
 
     lateinit var pres : MainPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         var id = item!!.itemId
         if (id == R.id.menu_deck_add) {
-            Toast.makeText(this, "Hello...", Toast.LENGTH_SHORT).show()
+            pres.displayDeckCreateDialog()
             return true
         }
 

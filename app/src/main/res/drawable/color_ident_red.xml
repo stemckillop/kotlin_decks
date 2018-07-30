@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <size android:width="32dp" android:height="32dp"/>
-    <solid android:color="@color/mana_red"/>
+    <solid android:color="@color/mana_red_true"/>
     <stroke android:color="#000" android:width="1dp"/>
 
 </shape>

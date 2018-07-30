@@ -11,6 +11,7 @@ data class Deck(@PrimaryKey(autoGenerate = true) var id: Long?,
         @ColumnInfo(name="info") var info: String,
         @ColumnInfo(name="type") var type: Int,
         @ColumnInfo(name="active") var active: Int,
-        @ColumnInfo(name="link") var link: String) {
-    constructor(): this(null, "", "", "", 0, 0, "")
+        @ColumnInfo(name="link") var link: String,
+                @ColumnInfo(name="commander") var commander: String) {
+    constructor(): this(null, "", "", "", 0, 0, "", "")
 }
