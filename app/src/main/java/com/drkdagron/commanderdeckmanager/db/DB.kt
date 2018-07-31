@@ -10,6 +10,7 @@ abstract class DB: RoomDatabase() {
     companion object DBTasks {
         val GET_DECK_LIST_ID = 100
         val ADD_DECK_ID = 101
+        val UPDATE_DECK_ID = 102
     }
 }
 

@@ -17,6 +17,7 @@ import com.drkdagron.commanderdeckmanager.db.Deck
 class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
 
     var fragmentManager: FragmentManager? = null
+    lateinit var pres: MainPresenter
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View?
@@ -32,7 +33,6 @@ class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
         }
 
         vh.name.text = decks.get(position).name
-        vh.info.text = decks.get(position).info
         when (decks.get(position).type) {
             0 -> {
                 if (Build.VERSION.SDK_INT < 23) {
@@ -74,6 +74,19 @@ class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
         if (decks.get(position).commander == "") {
             view!!.findViewById<TextView>(R.id.card_deck_commander_title).visibility = View.GONE
             vh.commander.visibility = View.GONE
+        } else {
+            vh.commander.setText(decks.get(position).commander)
+            view!!.findViewById<TextView>(R.id.card_deck_commander_title).visibility = View.VISIBLE
+            vh.commander.visibility = View.VISIBLE
+        }
+
+        if (decks.get(position).info == "") {
+            view!!.findViewById<TextView>(R.id.card_deck_info_title).visibility = View.GONE
+            vh.info.visibility = View.GONE
+        } else {
+            vh.info.text = decks.get(position).info
+            view!!.findViewById<TextView>(R.id.card_deck_info_title).visibility = View.VISIBLE
+            vh.info.visibility = View.VISIBLE
         }
 
         for (t in decks.get(position).identity) {

@@ -46,7 +46,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/edt_dialog_deck_type"
+        android:id="@+id/edt_dialog_deck_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
@@ -62,7 +62,7 @@
         android:text="Deck Format" />
 
     <Spinner
-        android:id="@+id/spin_dialog_format"
+        android:id="@+id/edt_dialog_deck_format"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="4dp" />

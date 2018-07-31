@@ -55,4 +55,7 @@ class MainPresenter(val view: MainActivity) : DBComplete {
     fun addNewDeck(d : Deck) {
         AddDeckTask(this).execute(view.applicationContext, d)
     }
+    fun updateDeck(d: Deck) {
+
+    }
 }
