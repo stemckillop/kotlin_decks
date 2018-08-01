@@ -101,9 +101,7 @@ class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
         }
 
         vh.modify.setOnClickListener {
-            var d = DeckCreateDialog()
-            d.deck = decks.get(position)
-            d.show(fragmentManager, "modify")
+            pres.modifyDeckDialog(decks.get(position))
         }
 
         return view!!

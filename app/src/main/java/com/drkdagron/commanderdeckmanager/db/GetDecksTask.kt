@@ -7,10 +7,8 @@ import android.widget.ListView
 import com.drkdagron.commanderdeckmanager.MainActivity
 
 class GetDecksTask(var complete: DBComplete) : AsyncTask<Any, Void, List<Deck>>() {
-    val GET_DECK_TASK_ID = 100
 
     override fun doInBackground(vararg params: Any?): List<Deck> {
-
         return Room.databaseBuilder(params[0]!! as Context, DB::class.java, "deckDB").build().deckDao().getAll()
     }
 

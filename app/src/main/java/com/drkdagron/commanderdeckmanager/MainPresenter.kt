@@ -14,9 +14,31 @@ class MainPresenter(val view: MainActivity) : DBComplete {
     var listEmpty: TextView = view.findViewById(R.id.main_deck_empty)
     lateinit var deckAdapter: DeckAdapter
 
+    fun showEmptyListText() {
+        listEmpty.visibility = View.VISIBLE
+        listView.visibility = View.GONE
+    }
+    fun hideEmptyListText() {
+        listEmpty.visibility = View.GONE
+        listView.visibility = View.VISIBLE
+    }
+
+    fun displayDeckCreateDialog() {
+        var d = DeckCreateDialog()
+        d.pres = this
+        d.show(view.fragmentManager, "create")
+    }
+    fun modifyDeckDialog(deck: Deck) {
+        var d = DeckCreateDialog()
+        d.pres = this
+        d.deck = deck
+        d.show(view.fragmentManager, "modify")
+    }
+
     override fun TaskComplete(id: Int, result: Any?) {
         if (id == DB.GET_DECK_LIST_ID) {
             deckAdapter = DeckAdapter(view.applicationContext, result as List<Deck>)
+            deckAdapter.pres = this
             deckAdapter.fragmentManager = view.fragmentManager
             listView.adapter = deckAdapter
 
@@ -27,35 +49,17 @@ class MainPresenter(val view: MainActivity) : DBComplete {
             }
         } else if (id == DB.ADD_DECK_ID) {
             getDeckList()
+        } else if (id == DB.UPDATE_DECK_ID) {
+            deckAdapter.notifyDataSetChanged()
         }
     }
-
-    lateinit var db : DB
-
-    fun getDeckList() {
-        GetDecksTask(this).execute(view.applicationContext)
-    }
-
-    fun showEmptyListText() {
-        listEmpty.visibility = View.VISIBLE
-        listView.visibility = View.GONE
-    }
-
-    fun hideEmptyListText() {
-        listEmpty.visibility = View.GONE
-        listView.visibility = View.VISIBLE
-    }
-
-    fun displayDeckCreateDialog() {
-        var dialog: DialogFragment = DeckCreateDialog()
-        (dialog as DeckCreateDialog).pres = this
-        dialog.show(view.fragmentManager, "CreateDeck")
-    }
-
     fun addNewDeck(d : Deck) {
         AddDeckTask(this).execute(view.applicationContext, d)
     }
     fun updateDeck(d: Deck) {
-
+        UpdateDeckTask(this).execute(view.applicationContext, d)
+    }
+    fun getDeckList() {
+        GetDecksTask(this).execute(view.applicationContext)
     }
 }
