@@ -1,10 +1,8 @@
 package com.drkdagron.commanderdeckmanager
 
-import android.app.Activity
 import android.app.FragmentManager
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import com.drkdagron.commanderdeckmanager.db.Deck
+import com.drkdagron.commanderdeckmanager.db.decks.Deck
 
 class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
 

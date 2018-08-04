@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.drkdagron.commanderdeckmanager.db.Deck
+import com.drkdagron.commanderdeckmanager.db.decks.Deck
 
 class DeckCreateDialog : DialogFragment() {
 
@@ -116,6 +116,7 @@ class DeckCreateDialog : DialogFragment() {
             if (!modify) {
                 pres.addNewDeck(d)
             } else {
+                d.id = deck!!.id
                 pres.updateDeck(d)
             }
         }
