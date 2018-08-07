@@ -8,6 +8,11 @@
         <item>Standard</item>
         <item>Vintage</item>
     </string-array>
-
+    <string-array name="places">
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th+</item>
+    </string-array>
 
 </resources>

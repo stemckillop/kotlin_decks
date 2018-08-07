@@ -6,12 +6,14 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName="deckData")
 data class Deck(@PrimaryKey(autoGenerate = true) var id: Long?,
-        @ColumnInfo(name="name") var name: String,
-        @ColumnInfo(name="identity") var identity: String,
-        @ColumnInfo(name="info") var info: String,
-        @ColumnInfo(name="type") var type: Int,
-        @ColumnInfo(name="active") var active: Int,
-        @ColumnInfo(name="link") var link: String,
+            @ColumnInfo(name="name") var name: String,
+            @ColumnInfo(name="identity") var identity: String,
+            @ColumnInfo(name="info") var info: String,
+            @ColumnInfo(name="type") var type: Int,
+            @ColumnInfo(name="active") var active: Int,
+            @ColumnInfo(name="link") var link: String,
+                @ColumnInfo(name="games") var games: Int,
+                @ColumnInfo(name="last") var last: Int,
                 @ColumnInfo(name="commander") var commander: String) {
-    constructor(): this(null, "", "", "", 0, 0, "", "")
+    constructor(): this(null, "", "", "", 0, 0, "", 0, 0, "")
 }

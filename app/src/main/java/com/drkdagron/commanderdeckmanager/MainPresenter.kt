@@ -9,6 +9,8 @@ import com.drkdagron.commanderdeckmanager.db.decks.AddDeckTask
 import com.drkdagron.commanderdeckmanager.db.decks.Deck
 import com.drkdagron.commanderdeckmanager.db.decks.GetDecksTask
 import com.drkdagron.commanderdeckmanager.db.decks.UpdateDeckTask
+import com.drkdagron.commanderdeckmanager.db.games.AddGameTask
+import com.drkdagron.commanderdeckmanager.db.games.Game
 
 class MainPresenter(val view: MainActivity) : DBComplete {
 
@@ -37,6 +39,15 @@ class MainPresenter(val view: MainActivity) : DBComplete {
         d.deck = deck
         d.show(view.fragmentManager, "modify")
     }
+    fun displayGameHistoryDialog(deck: Deck) {
+        var d = GameHistoryDialog()
+        d.deck = deck
+        d.pres = this
+        d.show(view.fragmentManager, "history")
+    }
+    fun displayGameHistory() {
+        //TODO: OPEN NEW ACTIVITY WHICH WILL LIST THE GAME HISTORY OF THIS DECK
+    }
 
     override fun TaskComplete(id: Int, result: Any?) {
         if (id == DB.GET_DECK_LIST_ID) {
@@ -54,6 +65,8 @@ class MainPresenter(val view: MainActivity) : DBComplete {
             getDeckList()
         } else if (id == DB.UPDATE_DECK_ID) {
             getDeckList()
+        } else if (id == DB.ADD_GAME_ID) {
+            getDeckList()
         }
     }
     fun addNewDeck(d : Deck) {
@@ -64,5 +77,9 @@ class MainPresenter(val view: MainActivity) : DBComplete {
     }
     fun getDeckList() {
         GetDecksTask(this).execute(mainDB)
+    }
+
+    fun addNewGame(g: Game, d: Deck) { //gotta update the game table then modify the player
+        AddGameTask(this).execute(mainDB, g, d)
     }
 }

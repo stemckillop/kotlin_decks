@@ -19,12 +19,31 @@ class DeckCreateDialog : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         var view = inflater!!.inflate(R.layout.dialog_deck_create, null)
 
+        var a = resources.getStringArray(R.array.formats)
+        var spin = view.findViewById<Spinner>(R.id.edt_dialog_deck_format)
+        commanderText = view.findViewById(R.id.edt_dialog_deck_commander)
+        spin.adapter = ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, a)
+        spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position > 0) {
+                    commanderText.visibility = View.GONE
+                } else {
+                    commanderText.visibility = View.VISIBLE
+                }
+            }
+        }
+
         if (deck != null) {
             modify = true
             view.findViewById<EditText>(R.id.edt_dialog_deck_name).setText(deck!!.name)
             view.findViewById<EditText>(R.id.edt_dialog_deck_commander).setText(deck!!.commander)
             view.findViewById<TextView>(R.id.edt_dialog_title).setText("Modify Deck")
             view.findViewById<EditText>(R.id.edt_dialog_deck_info).setText(deck!!.info)
+            spin.setSelection(deck!!.type)
 
             for (i in deck!!.identity) {
                 when (i) {
@@ -37,25 +56,6 @@ class DeckCreateDialog : DialogFragment() {
                 }
             }
         }
-
-        commanderText = view.findViewById(R.id.edt_dialog_deck_commander)
-
-        var a = resources.getStringArray(R.array.formats)
-        var spin = view.findViewById<Spinner>(R.id.edt_dialog_deck_format)
-        spin.adapter = ArrayAdapter<String>(activity, android.R.layout.simple_spinner_item, a)
-        spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    if (position > 0) {
-                        commanderText.visibility = View.GONE
-                    } else {
-                        commanderText.visibility = View.VISIBLE
-                    }
-                }
-            }
 
         view.findViewById<Button>(R.id.btn_dialog_add).setOnClickListener {
             AlertDialog.Builder(activity).setTitle("Add Deck")
@@ -106,7 +106,12 @@ class DeckCreateDialog : DialogFragment() {
         d.info = view.findViewById<TextView>(R.id.edt_dialog_deck_info).editableText.toString()
         d.identity = getIdentity()
         d.type = view.findViewById<Spinner>(R.id.edt_dialog_deck_format).selectedItemPosition
-        d.commander = view.findViewById<EditText>(R.id.edt_dialog_deck_commander).editableText.toString()
+        if (d.type == 0) {
+            d.commander = view.findViewById<EditText>(R.id.edt_dialog_deck_commander).editableText.toString()
+        } else {
+            d.commander = ""
+        }
+
 
         if (d.name == "") {
             Toast.makeText(activity, "Deck needs a name", Toast.LENGTH_SHORT).show()
