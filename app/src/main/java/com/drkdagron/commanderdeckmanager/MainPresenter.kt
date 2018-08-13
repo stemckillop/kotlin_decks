@@ -1,6 +1,8 @@
 package com.drkdagron.commanderdeckmanager
 
 import android.arch.persistence.room.Room
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.TextView
@@ -18,6 +20,13 @@ class MainPresenter(val view: MainActivity) : DBComplete {
     var listEmpty: TextView = view.findViewById(R.id.main_deck_empty)
     lateinit var deckAdapter: DeckAdapter
     var mainDB : DB = Room.databaseBuilder(view.applicationContext, DB::class.java, "roomDB").build()
+
+    fun gotoHistory(dID: Long) {
+        var intent = Intent(view.applicationContext, HistoryActivity::class.java)
+        var bun = Bundle()
+        bun.putLong("DECK_ID", dID)
+        view.startActivity(intent)
+    }
 
     fun showEmptyListText() {
         listEmpty.visibility = View.VISIBLE

@@ -107,7 +107,7 @@ class DeckAdapter(var ctx: Context, var decks: List<Deck>) : BaseAdapter() {
             pres.displayGameHistoryDialog(decks.get(position))
         }
         vh.history.setOnClickListener {
-            pres.displayGameHistory()
+            pres.gotoHistory(decks.get(position).id!!)
         }
 
         return view!!
