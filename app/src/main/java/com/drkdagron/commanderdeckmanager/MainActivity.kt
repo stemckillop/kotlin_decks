@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        DB.DBTasks.initDB(applicationContext)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

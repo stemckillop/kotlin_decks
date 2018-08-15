@@ -7,7 +7,7 @@ import com.drkdagron.commanderdeckmanager.db.DBComplete
 class UpdateDeckTask(var complete: DBComplete) : AsyncTask<Any, Void, Void>() {
 
     override fun doInBackground(vararg params: Any?): Void? {
-        var b = (params[0] as DB).deckDao().updateTask(params[1]!! as Deck)
+        var b = DB.DBTasks.mainDB.deckDao().updateTask(params[0]!! as Deck)
         return null
     }
 

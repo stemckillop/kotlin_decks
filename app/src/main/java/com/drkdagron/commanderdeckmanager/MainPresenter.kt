@@ -19,12 +19,13 @@ class MainPresenter(val view: MainActivity) : DBComplete {
     var listView: ListView = view.findViewById(R.id.main_deck_list)
     var listEmpty: TextView = view.findViewById(R.id.main_deck_empty)
     lateinit var deckAdapter: DeckAdapter
-    var mainDB : DB = Room.databaseBuilder(view.applicationContext, DB::class.java, "roomDB").build()
+
 
     fun gotoHistory(dID: Long) {
         var intent = Intent(view.applicationContext, HistoryActivity::class.java)
         var bun = Bundle()
         bun.putLong("DECK_ID", dID)
+        intent.putExtras(bun)
         view.startActivity(intent)
     }
 
@@ -54,9 +55,6 @@ class MainPresenter(val view: MainActivity) : DBComplete {
         d.pres = this
         d.show(view.fragmentManager, "history")
     }
-    fun displayGameHistory() {
-        //TODO: OPEN NEW ACTIVITY WHICH WILL LIST THE GAME HISTORY OF THIS DECK
-    }
 
     override fun TaskComplete(id: Int, result: Any?) {
         if (id == DB.GET_DECK_LIST_ID) {
@@ -79,16 +77,16 @@ class MainPresenter(val view: MainActivity) : DBComplete {
         }
     }
     fun addNewDeck(d : Deck) {
-        AddDeckTask(this).execute(mainDB, d)
+        AddDeckTask(this).execute(d)
     }
     fun updateDeck(d: Deck) {
-        UpdateDeckTask(this).execute(mainDB, d)
+        UpdateDeckTask(this).execute(d)
     }
     fun getDeckList() {
-        GetDecksTask(this).execute(mainDB)
+        GetDecksTask(this).execute()
     }
 
     fun addNewGame(g: Game, d: Deck) { //gotta update the game table then modify the player
-        AddGameTask(this).execute(mainDB, g, d)
+        AddGameTask(this).execute(g, d)
     }
 }

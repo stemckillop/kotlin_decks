@@ -1,7 +1,9 @@
 package com.drkdagron.commanderdeckmanager.db
 
 import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
+import android.content.Context
 import com.drkdagron.commanderdeckmanager.db.decks.Deck
 import com.drkdagron.commanderdeckmanager.db.decks.DeckDAO
 import com.drkdagron.commanderdeckmanager.db.games.Game
@@ -13,6 +15,11 @@ abstract class DB: RoomDatabase() {
     abstract fun gameDao(): GameDAO
 
     companion object DBTasks {
+        lateinit var mainDB : DB
+        fun initDB(ctx: Context) {
+            mainDB = Room.databaseBuilder(ctx, DB::class.java, "roomDB").build() as DB
+        }
+
         val GET_DECK_LIST_ID = 100
         val ADD_DECK_ID = 101
         val UPDATE_DECK_ID = 102

@@ -11,6 +11,7 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
-        pres = HistoryPresenter(this, intent.getBundleExtra().getLong("DECK_ID"))
+        pres = HistoryPresenter(this, intent.getLongExtra("DECK_ID", 0))
+        pres.getGameList()
     }
 }

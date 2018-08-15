@@ -7,7 +7,7 @@ import com.drkdagron.commanderdeckmanager.db.DBComplete
 class GetDecksTask(var complete: DBComplete) : AsyncTask<Any, Void, List<Deck>>() {
 
     override fun doInBackground(vararg params: Any?): List<Deck> {
-        return (params[0] as DB).deckDao().getAll()
+        return DB.DBTasks.mainDB.deckDao().getAll()
     }
 
     override fun onPostExecute(result: List<Deck>?) {

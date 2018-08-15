@@ -11,15 +11,15 @@ class AddGameTask(var complete: DBComplete) : AsyncTask<Any, Void, Unit>() {
     //params[1] == game
 
     override fun doInBackground(vararg params: Any?): Unit {
-        var g = params[1]!! as Game
-        var d = params[2]!! as Deck
+        var g = params[0]!! as Game
+        var d = params[1]!! as Deck
 
-        (params[0] as DB).gameDao().insertGame(g)
+        DB.DBTasks.mainDB.gameDao().insertGame(g)
 
         d.games++
         d.last = g.place
 
-        (params[0] as DB).deckDao().updateTask(d)
+        DB.DBTasks.mainDB.deckDao().updateTask(d)
         return
     }
 
