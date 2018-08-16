@@ -18,6 +18,4 @@ interface GameDAO {
 
     @Delete
     fun deleteGame(g: Game) : Int
-
-    //tasks
 }

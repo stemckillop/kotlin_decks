@@ -74,6 +74,10 @@ class MainPresenter(val view: MainActivity) : DBComplete {
             getDeckList()
         } else if (id == DB.ADD_GAME_ID) {
             getDeckList()
+        } else if (id == DB.DELETE_DECK_ID) {
+            if (result as Int > 0) {
+                getDeckList()
+            }
         }
     }
     fun addNewDeck(d : Deck) {

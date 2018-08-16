@@ -1,6 +1,7 @@
 package com.drkdagron.commanderdeckmanager
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.drkdagron.commanderdeckmanager.db.games.Game
+import java.util.*
 
 class HistoryAdapter(val ctx: Context, val games: List<Game>) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -23,7 +25,7 @@ class HistoryAdapter(val ctx: Context, val games: List<Game>) : BaseAdapter() {
             vh = view.tag as HistoryAdapter.ViewHolder
         }
 
-        vh.dateLabel.text = games[position].time.toString()
+        vh.dateLabel.text = getDate(games[position].time)
 
         vh.placeImage.visibility = View.GONE
         when (games[position].place) {
@@ -58,6 +60,13 @@ class HistoryAdapter(val ctx: Context, val games: List<Game>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return games.size
+    }
+
+    fun getDate(v: Long) : String {
+        var calender = Calendar.getInstance(Locale.CANADA)
+        calender.timeInMillis = v * 1000
+        var date: String = DateFormat.format("yyyy MM dd", calender).toString()
+        return date
     }
 
     class ViewHolder(val view: View) {

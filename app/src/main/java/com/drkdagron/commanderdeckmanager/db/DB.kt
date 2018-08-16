@@ -23,6 +23,7 @@ abstract class DB: RoomDatabase() {
         val GET_DECK_LIST_ID = 100
         val ADD_DECK_ID = 101
         val UPDATE_DECK_ID = 102
+        val DELETE_DECK_ID = 103
 
         val GET_GAMES_LIST_ID = 200
         val GET_GAMES_LIST_FROM_ID = 201

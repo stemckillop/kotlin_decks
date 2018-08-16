@@ -10,7 +10,7 @@ class AddDeckTask(var complete: DBComplete) : AsyncTask<Any, Void, Unit>() {
     //params[1] == deck
 
     override fun doInBackground(vararg params: Any?): Unit {
-        return DB.DBTasks.mainDB.deckDao().insertDeck(params[1]!! as Deck)
+        return DB.DBTasks.mainDB.deckDao().insertDeck(params[0]!! as Deck)
     }
 
     override fun onPostExecute(result: Unit?) {
