@@ -10,7 +10,10 @@ class DeleteDeckTask(var complete: DBComplete) : AsyncTask<Any, Void, Int>() {
     //params[1] == deck
 
     override fun doInBackground(vararg params: Any?): Int {
-        return DB.DBTasks.mainDB.deckDao().deleteDeck(params[0]!! as Deck)
+        var d: Deck = params[0]!! as Deck
+
+        DB.DBTasks.mainDB.gameDao().deleteGamesFor(d.id!!)
+        return DB.DBTasks.mainDB.deckDao().deleteDeck(d)
     }
 
     override fun onPostExecute(result: Int?) {

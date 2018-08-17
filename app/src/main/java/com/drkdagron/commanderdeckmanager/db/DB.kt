@@ -9,7 +9,7 @@ import com.drkdagron.commanderdeckmanager.db.decks.DeckDAO
 import com.drkdagron.commanderdeckmanager.db.games.Game
 import com.drkdagron.commanderdeckmanager.db.games.GameDAO
 
-@Database(entities = arrayOf(Deck::class, Game::class), version = 3)
+@Database(entities = arrayOf(Deck::class, Game::class), version = 4)
 abstract class DB: RoomDatabase() {
     abstract fun deckDao(): DeckDAO
     abstract fun gameDao(): GameDAO

@@ -16,6 +16,9 @@ interface GameDAO {
     @Insert
     fun insertGame(g: Game)
 
+    @Query("DELETE FROM gameData WHERE deckID = :deckID")
+    fun deleteGamesFor(deckID: Long) : Int
+
     @Delete
     fun deleteGame(g: Game) : Int
 }

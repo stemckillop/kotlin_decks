@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.drkdagron.commanderdeckmanager.db.decks.Deck
+import com.drkdagron.commanderdeckmanager.db.decks.DeleteDeckTask
 
 class DeckCreateDialog : DialogFragment() {
 
@@ -55,7 +56,26 @@ class DeckCreateDialog : DialogFragment() {
                     'A' -> view.findViewById<Switch>(R.id.swiA).isChecked = true
                 }
             }
+
+            var dBtn = view.findViewById<ImageButton>(R.id.btn_dialog_delete)
+            dBtn.visibility = View.VISIBLE
+            dBtn.setOnClickListener {
+                AlertDialog.Builder(activity).setTitle("Delete Deck")
+                        .setMessage("Are you sure you want to delete this deck?")
+                        .setPositiveButton("Yes", {dialog, which ->
+                            DeleteDeckTask(pres).execute(deck as Deck)
+                            dismiss()
+                        })
+                        .setNegativeButton("No", {dialog, which ->
+                            dialog.dismiss()
+                        })
+                        .show()
+            }
+
+        } else {
+            view.findViewById<ImageButton>(R.id.btn_dialog_delete).visibility = View.GONE
         }
+
 
         view.findViewById<Button>(R.id.btn_dialog_add).setOnClickListener {
             AlertDialog.Builder(activity).setTitle("Add Deck")
