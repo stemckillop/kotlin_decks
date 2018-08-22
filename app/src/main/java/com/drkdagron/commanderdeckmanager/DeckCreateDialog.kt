@@ -62,13 +62,13 @@ class DeckCreateDialog : DialogFragment() {
             dBtn.setOnClickListener {
                 AlertDialog.Builder(activity).setTitle("Delete Deck")
                         .setMessage("Are you sure you want to delete this deck?")
-                        .setPositiveButton("Yes", {dialog, which ->
+                        .setPositiveButton("Yes") {dialog, which ->
                             DeleteDeckTask(pres).execute(deck as Deck)
                             dismiss()
-                        })
-                        .setNegativeButton("No", {dialog, which ->
+                        }
+                        .setNegativeButton("No") {dialog, which ->
                             dialog.dismiss()
-                        })
+                        }
                         .show()
             }
 
@@ -76,17 +76,17 @@ class DeckCreateDialog : DialogFragment() {
             view.findViewById<ImageButton>(R.id.btn_dialog_delete).visibility = View.GONE
         }
 
-
         view.findViewById<Button>(R.id.btn_dialog_add).setOnClickListener {
             AlertDialog.Builder(activity).setTitle("Add Deck")
                     .setMessage("Are you sure you want to add this deck?")
-                    .setPositiveButton("Yes", {dialog, which ->
+                    .setPositiveButton("Yes") {dialog, which ->
                         buildDeck()
                         dismiss()
-                    })
-                    .setNegativeButton("No", { dialog, which ->
+                    }
+                    .setNegativeButton("No") { dialog, which ->
                         dismiss()
-                    }).show()
+                    }
+                    .show()
         }
 
         view.findViewById<Button>(R.id.btn_dialog_cancel).setOnClickListener {

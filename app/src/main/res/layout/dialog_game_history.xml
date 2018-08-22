@@ -73,5 +73,21 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Notes:" />
+
+    <EditText
+        android:id="@+id/edt_dialog_notes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
 
 </LinearLayout>

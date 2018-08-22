@@ -1,9 +1,8 @@
 package com.drkdagron.commanderdeckmanager.db.games
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
+import android.arch.persistence.room.OnConflictStrategy.REPLACE
+import com.drkdagron.commanderdeckmanager.db.decks.Deck
 
 @Dao
 interface GameDAO {
@@ -18,6 +17,9 @@ interface GameDAO {
 
     @Query("DELETE FROM gameData WHERE deckID = :deckID")
     fun deleteGamesFor(deckID: Long) : Int
+
+    @Update(onConflict = REPLACE)
+    fun updateGame(g: Game) : Int
 
     @Delete
     fun deleteGame(g: Game) : Int

@@ -2,6 +2,7 @@ package com.drkdagron.commanderdeckmanager
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.drkdagron.commanderdeckmanager.db.decks.Deck
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -11,7 +12,8 @@ class HistoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
 
-        pres = HistoryPresenter(this, intent.getLongExtra("DECK_ID", 0))
+        var d = intent.getSerializableExtra("DECK") as Deck
+        pres = HistoryPresenter(this, d )
         pres.getGameList()
     }
 }

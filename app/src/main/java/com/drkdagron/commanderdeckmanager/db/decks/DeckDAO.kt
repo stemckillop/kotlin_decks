@@ -12,6 +12,9 @@ interface DeckDAO {
     @Query("SELECT * FROM deckData WHERE active = 1")
     fun getAllActive() : List<Deck>
 
+    @Query("SELECT * FROM deckData WHERE id = :deckid")
+    fun selectDeck(deckid: Int) : Deck
+
     @Insert
     fun insertDeck(d: Deck)
 

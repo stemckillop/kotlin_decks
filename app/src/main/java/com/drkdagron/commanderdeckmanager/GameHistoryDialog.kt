@@ -8,16 +8,26 @@ import android.view.ViewGroup
 import android.widget.*
 import com.drkdagron.commanderdeckmanager.db.decks.Deck
 import com.drkdagron.commanderdeckmanager.db.games.Game
+import kotlinx.android.synthetic.main.dialog_game_history.*
+import kotlinx.android.synthetic.main.dialog_game_history.view.*
 import java.time.LocalDateTime
 import java.util.*
 
 class GameHistoryDialog : DialogFragment() {
 
     lateinit var deck: Deck
-    lateinit var pres: MainPresenter
+    lateinit var pres: Presenter
+    var game: Game? = null
+    lateinit var noteView : EditText
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         var view = inflater!!.inflate(R.layout.dialog_game_history, null)
+        noteView = view.findViewById<EditText>(R.id.edt_dialog_notes)
+
+        if (game != null) {
+            view.findViewById<TextView>(R.id.edt_dialog_title).text = "Modify Game Result"
+            noteView.setText(game!!.notes)
+        }
 
         view.findViewById<ImageButton>(R.id.btn_first_place).setOnClickListener {
             buildGameHistory(1)
@@ -36,11 +46,19 @@ class GameHistoryDialog : DialogFragment() {
     }
 
     fun buildGameHistory(p : Int){
-        var g = Game()
-        g.deckID = deck.id!!
-        g.place = p
-        g.time = System.currentTimeMillis() / 1000
-        pres.addNewGame(g, deck!!)
+
+        if (game == null) {
+            var g = Game()
+            g.deckID = deck.id!!
+            g.place = p
+            g.notes = noteView.text.toString()
+            g.time = System.currentTimeMillis() / 1000
+            (pres as MainPresenter).addNewGame(g, deck!!)
+        } else {
+            game!!.place = p
+            game!!.notes = noteView.text.toString()
+            (pres as HistoryPresenter).modifyGameHistory(game!!)
+        }
         dismiss()
     }
 }

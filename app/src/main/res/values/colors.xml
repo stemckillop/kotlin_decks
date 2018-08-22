@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
 
-    <color name="mana_white">#f8e7b9</color>
-    <color name="mana_blue">#b3ceea</color>
-    <color name="mana_black">#a69f9d</color>
-    <color name="mana_red">#eb9f82</color>
-    <color name="mana_green">#c4d3ca</color>
-    <color name="mana_colorless">#bbb</color>
+<color name="colorPrimary">#465C69</color>
+<color name="colorPrimaryDark">#32292F</color>
+<color name="colorAccent">#C6BEB8</color>
 
-    <color name="mana_white_true">#f9faf4</color>
-    <color name="mana_blue_true">#0e68ab</color>
-    <color name="mana_black_true">#150b00</color>
-    <color name="mana_red_true">#d3202a</color>
-    <color name="mana_green_true">#00733e</color>
-    <color name="mana_colorless_true">#666</color>
+<color name="mana_white">#f8e7b9</color>
+<color name="mana_blue">#b3ceea</color>
+<color name="mana_black">#a69f9d</color>
+<color name="mana_red">#eb9f82</color>
+<color name="mana_green">#c4d3ca</color>
+<color name="mana_colorless">#bbb</color>
+
+<color name="mana_white_true">#f9faf4</color>
+<color name="mana_blue_true">#0e68ab</color>
+<color name="mana_black_true">#150b00</color>
+<color name="mana_red_true">#d3202a</color>
+<color name="mana_green_true">#00733e</color>
+<color name="mana_colorless_true">#666</color>
 
 </resources>

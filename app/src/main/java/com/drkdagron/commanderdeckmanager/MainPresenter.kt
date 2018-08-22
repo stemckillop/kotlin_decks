@@ -14,17 +14,17 @@ import com.drkdagron.commanderdeckmanager.db.decks.UpdateDeckTask
 import com.drkdagron.commanderdeckmanager.db.games.AddGameTask
 import com.drkdagron.commanderdeckmanager.db.games.Game
 
-class MainPresenter(val view: MainActivity) : DBComplete {
+class MainPresenter(val view: MainActivity) : Presenter(), DBComplete {
 
     var listView: ListView = view.findViewById(R.id.main_deck_list)
     var listEmpty: TextView = view.findViewById(R.id.main_deck_empty)
     lateinit var deckAdapter: DeckAdapter
 
 
-    fun gotoHistory(dID: Long) {
+    fun gotoHistory(d: Deck) {
         var intent = Intent(view.applicationContext, HistoryActivity::class.java)
         var bun = Bundle()
-        bun.putLong("DECK_ID", dID)
+        bun.putSerializable("DECK", d)
         intent.putExtras(bun)
         view.startActivity(intent)
     }

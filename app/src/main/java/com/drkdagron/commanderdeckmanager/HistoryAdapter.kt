@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.drkdagron.commanderdeckmanager.db.decks.Deck
 import com.drkdagron.commanderdeckmanager.db.games.Game
 import java.util.*
 
 class HistoryAdapter(val ctx: Context, val games: List<Game>) : BaseAdapter() {
+
+    lateinit var pres: HistoryPresenter
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View?
         val vh: HistoryAdapter.ViewHolder
@@ -23,6 +27,10 @@ class HistoryAdapter(val ctx: Context, val games: List<Game>) : BaseAdapter() {
         } else {
             view = convertView
             vh = view.tag as HistoryAdapter.ViewHolder
+        }
+
+        view!!.setOnClickListener {
+            pres.modifyGameHistoryView(games[position])
         }
 
         vh.dateLabel.text = getDate(games[position].time)

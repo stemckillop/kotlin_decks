@@ -12,7 +12,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="4dp"
-        android:background="@android:color/white"
+        android:background="#ffffff"
         android:elevation="4dp"
         android:orientation="vertical">
 
